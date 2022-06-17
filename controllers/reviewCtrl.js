@@ -1,34 +1,40 @@
-const Media = require('../models/media')
+const Anime = require('../models/anime')
 
 module.exports = {
     create,
-    deleteReview
+    deleteReview,
+    //edit function
 }
 
 function create(req, res) {
-    Media.findById(req.params.id, function (err, media) {
-        media.reviews.push(req.body);
+    Anime.findById(req.params.id, function (err, anime) {
+        anime.reviews.push(req.body);
   
-        media.save(function (err) {
+        anime.save(function (err) {
           if (err) {
             console.log(err);
           }
-          res.redirect(`/media/${media._id}`);
+          res.redirect(`/anime/${anime._id}`);
         });
       }
     );
   }
 
   function deleteReview(req,res) {
-    Media.findById(req.params.mediaId, function(err, media) {
+    Anime.findById(req.params.animeId, function(err, anime) {
 
-        media.reviews.id(req.params.reviewId).remove()
-        media.reviews.id(req.params.reviewId).content = req.body.content
-        media.reviews.id(req.params.reviewId).rating = req.body.rating
+        anime.reviews.id(req.params.reviewId).remove()
+        anime.reviews.id(req.params.reviewId).content = req.body.content
+        anime.reviews.id(req.params.reviewId).rating = req.body.rating
 
-        media.save(function(err){
+        anime.save(function(err){
             if (err) console.log(err)
         })
     })
-    res.redirect(`/media/${req.params.mediaId}`)
+    res.redirect(`/anime/${req.params.animeId}`)
 }
+
+function updateReview(req,res) {
+    Anime.findByIdAndUpdate(req.params.animeId, req.body)
+
+    }

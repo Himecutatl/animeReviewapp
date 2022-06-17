@@ -8,25 +8,24 @@ const reviewSchema = new Schema({
   timestamps: true
 });
 
-const mediaSchema = new Schema({
+//EDIT SCHEMA T0 MATCH PARAMETERS IN API 
+const animeSchema = new Schema({
   title: {
     type: String,
     required: true
   },
-  genre: {
+  synposis: {
       type: String,
   },
-  releaseYear: {
-    type: Number,
-    default: function () {
-      return new Date().getFullYear();
-    }
-  }, mpaaRating: String,
-  cast: [String],
-  ongoing: { type: Boolean, default: false },
+  episodes: {
+    type: Number
+  },
+  image_url: {
+    type: String
+  },
   reviews: [reviewSchema]
 }, {
   timestamps: true
 });
 
-module.exports = mongoose.model('Media', mediaSchema);
+module.exports = mongoose.model('Anime', animeSchema);

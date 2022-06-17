@@ -1,11 +1,20 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= Anime Reviews %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+<body>
+  <table id="list">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Release<br>Year</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% anime.forEach(function(m) { %>
+          <tr>
+            <td><%= m.title %></td>
+            <td><%= m.image_url %></td>
+            <td><a href="/anime/<%= m._id %>">DETAILS</a></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
   </body>
-</html>
