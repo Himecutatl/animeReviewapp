@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 var methodOverride = require('method-override')
-const PORT = 4005
+const PORT = 4001
 //var port = normalizePort(process.env.PORT || '3000');
 require('dotenv').config();
 
@@ -18,7 +18,7 @@ const axios = require("axios");
 
 const options = {
   method: 'GET',
-  url: 'https://jikan1.p.rapidapi.com/search/anime',
+  url: 'https://jikan1.p.rapidapi.com/top/anime/1/upcoming',
   params: {q: 'Fate/Zero'},
   headers: {
     'X-RapidAPI-Key': 'd1cdc717d3mshc064114f2aa93acp1c805ajsn0c9639b85718',
@@ -36,7 +36,7 @@ axios.request(options).then(function (response) {
 const APIKey = "d1cdc717d3mshc064114f2aa93acp1c805ajsn0c9639b85718"
 
 
-//ALL MY RENDER RES ARE FAILING FUCK
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'))
