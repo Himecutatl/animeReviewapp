@@ -8,7 +8,7 @@ module.exports = {
 //SOMETHING NOT DEFINED CORRECTLY?
 function index(req, res) {
     Anime.find({}, function(err, anime) {
-      res.render('views/anime.ejs', { title: 'All Anime', anime });
+      res.render('anime.ejs', { title: 'All Anime', anime });
     });
   }
   
