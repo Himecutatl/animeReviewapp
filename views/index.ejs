@@ -11,10 +11,22 @@
         <% anime.forEach(function(m) { %>
           <tr>
             <td><%= m.title %></td>
-            <td><%= m.image_url %></td>
-            <td><a href="/anime/<%= m._id %>">DETAILS</a></td>
+            <td><img src=<%= m.image_url %>></td>
+            <td><a href="details/<%= m.mal_id %>">DETAILS</a></td>
           </tr>
           <% }); %>
         </tbody>
       </table>
   </body>
+
+
+
+
+
+  <!--  anime.every(function(m) { %>
+          <tr>
+            <td>= m.title %></td>
+            <td>= m.image_url %></td>
+            <td><a href="/anime/<= m._id %>">DETAILS</a></td>
+          </tr>
+          < }); %> -->

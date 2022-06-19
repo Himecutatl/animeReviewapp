@@ -17,9 +17,6 @@ const animeSchema = new Schema({
   synposis: {
       type: String,
   },
-  episodes: {
-    type: Number
-  },
   image_url: {
     type: String
   },

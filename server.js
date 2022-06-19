@@ -7,7 +7,7 @@ const PORT = 4001
 require('dotenv').config();
 
 require('./config/database');
-const indexRouter = require('./routes/index');
+
 const animeRouter = require('./routes/anime');
 const reviewRouter = require('./routes/reviews');
 
@@ -15,26 +15,6 @@ const app = express();
 
 //API
 const axios = require("axios");
-
-const options = {
-  method: 'GET',
-  url: 'https://jikan1.p.rapidapi.com/top/anime/1/upcoming',
-  params: {q: 'Fate/Zero'},
-  headers: {
-    'X-RapidAPI-Key': 'd1cdc717d3mshc064114f2aa93acp1c805ajsn0c9639b85718',
-    'X-RapidAPI-Host': 'jikan1.p.rapidapi.com'
-  }
-};
-
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
-
-
-const APIKey = "d1cdc717d3mshc064114f2aa93acp1c805ajsn0c9639b85718"
-
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -49,11 +29,10 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-console.log('check 1')
-app.use('/anime', animeRouter);
+
+app.use('/', animeRouter);
 console.log('check 2')
-app.use('/anime/:id/reviews', reviewRouter);
+// app.use('/details/:id/', reviewRouter);
 console.log('check 3')
 
 
