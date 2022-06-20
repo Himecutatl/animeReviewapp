@@ -23,11 +23,6 @@ module.exports = {
 
 function index(req, res) { 
 
-//  Anime.findById('62af88e4f315014a3fdb1285', function(anime) {
-//    console.log(anime)
-//  })
-
-
   axios.request(options).then(function (response) {
 
     let animeData = response.data.top;
@@ -46,7 +41,8 @@ function index(req, res) {
     })
     res.render('index.ejs', { anime: animeData });
     //console.log(response.data.top);
-    console.log(anime)
+    console.log('This is Kareems test')
+    console.log(animeData)
   }).catch(function (error) {
     console.error(error);
   });

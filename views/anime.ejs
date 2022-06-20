@@ -18,7 +18,7 @@
 <!-- FIGURE OUT WHAT HAPPENS WHEN THE SUBMIT BUTTON IS PRESSED, FIGURE OUT ORDER -->
 <br><br><h2>Reviews</h2>
 <form id="add-review-form" method="POST"
-  action="http://mongodb+srv://himecut:yG9p9moY@sei.jyopsyw.mongodb.net/?retryWrites=true&w=majority"> 
+  action="/details/<%= anime['base64'] %>"> 
   <label>Review:</label>
   <textarea name="content"></textarea>
   <label>Rating:</label>
@@ -30,7 +30,7 @@
     <option value="5">5</option>
   </select>
   <input type="submit" value="Add Review">
-
+</form>
       <!-- EDIT REVIEW -->
   <form method="POST" action="/details/<%= anime.base64 %> ?_method=PATCH">
       <!-- INPUT SHIT HERE -->
@@ -42,4 +42,4 @@
 </form>
 
 
-</form>
+
