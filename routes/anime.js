@@ -4,7 +4,7 @@ const animeCtrl = require('../controllers/animeCtrl');
 
 
 router.get('/', animeCtrl.index);
-router.get('/details/:id', animeCtrl.show);
+router.get('/details/:base64', animeCtrl.show);
 
 
 module.exports = router;

@@ -1,10 +1,11 @@
 
 const { default: axios } = require('axios');
+const anime = require('../models/anime');
 const Anime = require('../models/anime')
 
 const options = {
   method: 'GET',
-  url: 'https://jikan1.p.rapidapi.com/top/anime/1/upcoming',
+  url: 'https://jikan1.p.rapidapi.com/top/anime/1/airing',
   headers: {
     'X-RapidAPI-Key': 'd1cdc717d3mshc064114f2aa93acp1c805ajsn0c9639b85718',
     'X-RapidAPI-Host': 'jikan1.p.rapidapi.com'
@@ -20,17 +21,42 @@ module.exports = {
     show
 }
 
-function index(req, res) { //Try to mess with params
+function index(req, res) { 
+
+//  Anime.findById('62af88e4f315014a3fdb1285', function(anime) {
+//    console.log(anime)
+//  })
+
+
   axios.request(options).then(function (response) {
-    res.render('index.ejs', { anime: response.data.top });
-    console.log(response.data.top);
+
+    let animeData = response.data.top;
+
+    // let objectToString = JSON.stringify(animeData[0]);
+
+    // let sampleObject = Buffer.from(objectToString).toString('base64');
+    //   //USE THIS CODE AT DESTINATION
+    // let decodeString = Buffer.from(sampleObject, 'base64').toString('utf-8')
+
+    animeData.forEach(function (anime, i) {
+      let objectToString = JSON.stringify(anime);
+
+      let encodedString = Buffer.from(objectToString).toString('base64');
+      animeData[i].base64 = encodedString;
+    })
+    res.render('index.ejs', { anime: animeData });
+    //console.log(response.data.top);
+    console.log(anime)
   }).catch(function (error) {
     console.error(error);
   });
   }
   
-  function show(req, res) {
-    Anime.findById(req.params.id, function(err, anime) {
-      res.render('anime.ejs', { title: 'Anime Detail', anime });
-    });
-  }
+  function show(req, res) { //req.params.base64 is how to get data 
+      
+      let decodedString = Buffer.from(req.params.base64, 'base64').toString('utf-8')
+
+      let anime = JSON.parse(decodedString);
+
+      res.render('anime.ejs', { anime: anime  });
+  };

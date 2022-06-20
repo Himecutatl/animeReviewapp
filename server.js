@@ -3,6 +3,7 @@ const path = require('path');
 const logger = require('morgan');
 var methodOverride = require('method-override')
 const PORT = 4001
+var bodyParser = require('body-parser')
 //var port = normalizePort(process.env.PORT || '3000');
 require('dotenv').config();
 
@@ -26,13 +27,13 @@ app.use(methodOverride('_method'))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', animeRouter);
 console.log('check 2')
-// app.use('/details/:id/', reviewRouter);
+app.use('/details/:base64/', reviewRouter);
 console.log('check 3')
 
 
