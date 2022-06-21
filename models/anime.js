@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// const reviewContentSchema = new Schema ({
+//   review: String,
+// })
+
 const reviewSchema = new Schema({
   // _id: String,
   mal_id: String,

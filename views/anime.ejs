@@ -12,14 +12,24 @@
   <div>End Date: </div>
   <div><%= anime.end_date %></div>
 
-  <div>mal_id: </div>
-  <div><%= anime.mal_id %></div>
 
-
-
-  
-  
-
+ <!-- OFFICE HOURS QUESTION, MAKING REVIEWS POPULATE PAGE -->
+    <table>
+      <thead>
+        <tr>
+          <th>Review</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% review.forEach(function(r) { %>
+          <tr>
+            <td><%= r.review %></td>
+            <td><%= r.rating %></td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
   
 
 <!-- LEAVE A REVIEW -->
@@ -37,8 +47,9 @@
     <option value="4">4</option>
     <option value="5">5</option>
   </select>
+
+  <textarea hidden name="mal_id" ><%= anime.mal_id %></textarea>
   <input type="submit" value="Add Review">
-  <input type="hidden" name="mal_id" value="<% anime.base64 %>">
 </form>
       <!-- EDIT REVIEW -->
   <form method="POST" action="/details/<%= base64 %> ?_method=PATCH">
