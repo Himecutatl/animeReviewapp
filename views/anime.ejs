@@ -12,15 +12,23 @@
   <div>End Date: </div>
   <div><%= anime.end_date %></div>
 
+  <div>mal_id: </div>
+  <div><%= anime.mal_id %></div>
 
+
+
+  
+  
+
+  
 
 <!-- LEAVE A REVIEW -->
 <!-- FIGURE OUT WHAT HAPPENS WHEN THE SUBMIT BUTTON IS PRESSED, FIGURE OUT ORDER -->
 <br><br><h2>Reviews</h2>
 <form id="add-review-form" method="POST"
-  action="/details/<%= anime['base64'] %>"> 
+  action="/details/<%= base64 %>"> 
   <label>Review:</label>
-  <textarea name="content"></textarea>
+  <textarea name="review"></textarea>
   <label>Rating:</label>
   <select name="rating">
     <option value="1">1</option>
@@ -30,16 +38,18 @@
     <option value="5">5</option>
   </select>
   <input type="submit" value="Add Review">
+  <input type="hidden" name="mal_id" value="<% anime.base64 %>">
 </form>
       <!-- EDIT REVIEW -->
-  <form method="POST" action="/details/<%= anime.base64 %> ?_method=PATCH">
+  <form method="POST" action="/details/<%= base64 %> ?_method=PATCH">
       <!-- INPUT SHIT HERE -->
     <input type="submit" value="Edit Review">
   </form>
     <!-- DELETE REVIEW -->
-  <form method="POST" action="/details/<%= anime.base64 %> ?_method=DELETE">
+  <form method="POST" action="/details/<%= base64 %> ?_method=DELETE">
     <input type="submit" value="Delete Review">
 </form>
+
 
 
 

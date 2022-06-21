@@ -1,6 +1,5 @@
 
 const { default: axios } = require('axios');
-const anime = require('../models/anime');
 const Anime = require('../models/anime')
 
 const options = {
@@ -41,8 +40,8 @@ function index(req, res) {
     })
     res.render('index.ejs', { anime: animeData });
     //console.log(response.data.top);
-    console.log('This is Kareems test')
-    console.log(animeData)
+   
+    
   }).catch(function (error) {
     console.error(error);
   });
@@ -53,6 +52,6 @@ function index(req, res) {
       let decodedString = Buffer.from(req.params.base64, 'base64').toString('utf-8')
 
       let anime = JSON.parse(decodedString);
-
-      res.render('anime.ejs', { anime: anime  });
+        console.log(anime)
+      res.render('anime.ejs', { anime: anime, base64:req.params.base64  });
   };

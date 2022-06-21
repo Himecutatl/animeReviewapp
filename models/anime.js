@@ -6,6 +6,7 @@ const reviewSchema = new Schema({
   mal_id: String,
   review: String,
   rating: {type: Number, min: 1, max: 5, default: 5},
+  base64: String
   // user_id: String
 }, 
   
@@ -28,4 +29,4 @@ const reviewSchema = new Schema({
 //   timestamps: true
 // });
 
-module.exports = mongoose.model('Review', reviewSchema);
+module.exports = mongoose.model('review', reviewSchema, 'review');

@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', animeRouter);
 console.log('check 2')
-app.use('/details/:base64', reviewRouter);
+app.use('/details/', reviewRouter);
 console.log('check 3')
 
 
