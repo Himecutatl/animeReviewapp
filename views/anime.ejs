@@ -13,7 +13,6 @@
   <div><%= anime.end_date %></div>
 
 
- <!-- OFFICE HOURS QUESTION, MAKING REVIEWS POPULATE PAGE -->
     <table>
       <thead>
         <tr>
@@ -22,15 +21,19 @@
         </tr>
       </thead>
       <tbody>
-        <% review.forEach(function(r) { %>
+        <% reviewList.forEach(function(r) { %>
           <tr>
             <td><%= r.review %></td>
             <td><%= r.rating %></td>
+            <td><%= r._id %></td>
+            <td><form method ="DELETE" action="/details/<%= base64%>">
+              <input type="hidden" name='base64' value="<%= base64 %>"/>
+              <button type="submit">Delete</button></form></td>
           </tr>
           <% }); %>
       </tbody>
     </table>
-  
+   
 
 <!-- LEAVE A REVIEW -->
 <!-- FIGURE OUT WHAT HAPPENS WHEN THE SUBMIT BUTTON IS PRESSED, FIGURE OUT ORDER -->

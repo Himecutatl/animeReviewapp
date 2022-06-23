@@ -1,6 +1,6 @@
 
 const { default: axios } = require('axios');
-const Anime = require('../models/anime')
+const review = require('../models/anime')
 
 const options = {
   method: 'GET',
@@ -52,6 +52,11 @@ function index(req, res) {
       let decodedString = Buffer.from(req.params.base64, 'base64').toString('utf-8')
 
       let anime = JSON.parse(decodedString);
-        console.log(anime)
-      res.render('anime.ejs', { anime: anime, base64:req.params.base64  });
-  };
+        //console.log(anime)
+      review.find({}, function(err, reviews) {
+        //console.log(reviews)
+      res.render('anime.ejs', { anime: anime, base64:req.params.base64, reviewList: reviews});
+  })}
+
+  //MAYBE FIND BY MAL_ID? ^
+  //QUESTION TO ASK, WHEN I HAVE SHOW FUNCTION LIKE THIS, MY CREATE REVIEW FUNCTION STOPS
