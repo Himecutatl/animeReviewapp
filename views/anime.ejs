@@ -1,5 +1,16 @@
 
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" charset="utf-8">
+    <%- include('./partials/header.ejs') %>
+</head>
+
 <section id="show-page">
   <div>Title: </div>
   <div><%= anime.title %></div>
@@ -12,7 +23,7 @@
   <div>End Date: </div>
   <div><%= anime.end_date %></div>
 
-
+<!-- ACTION TAG FOR DELETE SEEMS OFF -->
     <table>
       <thead>
         <tr>

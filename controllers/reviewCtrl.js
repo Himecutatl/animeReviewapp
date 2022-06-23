@@ -18,8 +18,8 @@ function create(req, res) {
 
 
     //WHY DONT THIS WORK
-  function deleteReview(req,res) {
-      console.log(res)
+function deleteReview(req,res) {
+      console.log(req.params)
     review.findByIdAndDelete(req.params.id) 
         
     res.redirect(`/details/${req.body.base64}`)
