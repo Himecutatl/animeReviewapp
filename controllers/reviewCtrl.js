@@ -17,15 +17,21 @@ function create(req, res) {
     };
 
 
-    //WHY DONT THIS WORK
+ 
 function deleteReview(req,res) {
       console.log(req.params)
-    review.findByIdAndDelete(req.params.id) 
+    review.findByIdAndDelete(req.params.mal_id, function(err,review) {
+
+        res.redirect(`/details/${req.body.base64}`)
+
+    }) 
         
-    res.redirect(`/details/${req.body.base64}`)
 }
 
 function updateReview(req,res) { //Event handler function(?)
-    review.findByIdAndUpdate(req.params.id, req.body)
+    review.findByIdAndUpdate(req.params.mal_id, req.body)
+
+    res.redirect(`/details/${req.body.base64}`)
 
     }
+//the params are referencing the Mal_ID but unsure how to reference object id, would it have to do with ny routes?

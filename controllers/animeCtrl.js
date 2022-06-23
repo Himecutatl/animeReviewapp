@@ -48,12 +48,12 @@ function index(req, res) {
   }
   
   function show(req, res) { //req.params.base64 is how to get data 
-      
+      console.log(req.params)
       let decodedString = Buffer.from(req.params.base64, 'base64').toString('utf-8')
 
       let anime = JSON.parse(decodedString);
         //console.log(anime)
-      review.find({}, function(err, reviews) {
+      review.find({}, function(err, reviews) { //Maybe apply mal_id to make it where only reviews tied to the mal Id appear
         //console.log(reviews)
       res.render('anime.ejs', { anime: anime, base64:req.params.base64, reviewList: reviews});
   })}
