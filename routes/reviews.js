@@ -5,6 +5,6 @@ const reviewCtrl = require('../controllers/reviewCtrl')
 
 router.post('/:mal_id', reviewCtrl.create);
 router.delete('/:mal_id/', reviewCtrl.deleteReview)
-// router.patch('/details/:base64', reviewCtrl.updateReview)
+router.put('/:mal_id/', reviewCtrl.updateReview)
 
 module.exports = router;

@@ -53,7 +53,7 @@ function index(req, res) {
 
       let anime = JSON.parse(decodedString);
         //console.log(anime)
-      review.find({}, function(err, reviews) { //Maybe apply mal_id to make it where only reviews tied to the mal Id appear
+      review.find({mal_id: anime.mal_id}, function(err, reviews) { //Maybe apply mal_id to make it where only reviews tied to the mal Id appear
         //console.log(reviews)
       res.render('anime.ejs', { anime: anime, base64:req.params.base64, reviewList: reviews});
   })}
