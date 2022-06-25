@@ -5,27 +5,30 @@
   <head>
     <meta charset="utf-8">
 
-  
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    
+    <link rel='stylesheet' type="text/css" href='/stylesheets/styles.css' />
     <%- include('./partials/header.ejs') %>
 </head>
 
+<div style="background-color: mintcream;">
+
 <section id="show-page">
-  <div>
-  <div >Title: </div>
-  <div><%= anime.title %></div>
-  <div>Preview: </div>
-  <div><img src=<%= anime.image_url %> ></div>
-  <div>Episodes: </div>
-  <div><%= anime.episodes %></div>
-  <div>Start Date: </div>
-  <div><%= anime.start_date %></div>
-  <div>End Date: </div>
-  <div><%= anime.end_date %></div>
+  <div class="container-fluid">
+  <div class="lead">Title: </div>
+  <div class="w-25 p-3" style="background-color: #eee;"><%= anime.title %></div>
+  <div class="lead">Preview: </div>
+  <div id="animeImage"><img src=<%= anime.image_url %> class="rounded float-left"></div>
+  <div class="lead" style="padding-left: 12em">Episodes: </div>
+  <div class="w-25 p-3" style="background-color: #eee; padding: 20px;"><%= anime.episodes %></div>
+  <div class="lead" style="padding-left: 12em">Start Date: </div>
+  <div class="w-25 p-3" style="background-color: #eee;"><%= anime.start_date %></div>
+  <div class="lead" style="padding-left: 12em">End Date: </div>
+  <div class="w-25 p-3" style="background-color: #eee;"><%= anime.end_date %></div>
 
 </div>
-
+<br>
+<br>
+<br>
 
     <table>
       <thead>
@@ -38,12 +41,11 @@
         <% reviewList.forEach(function(r) { %>
          
           <tr>
-            <td><%= r.review %></td>
-            <td><%= r.rating %></td>
+            <td class="text-justify"><%= r.review %></td>
+            <td style="text-align:center"><%= r.rating %></td>
             <td><form method ="POST" action="/details/<%= r._id %>?_method=DELETE">
               <input type="hidden" name='base64' value="<%= base64 %>"/>
-              <button type="submit">Delete</button></form></td>
-            
+              <button type="submit" class="btn btn-primary">Delete</button></form></td>
           <td> <form method="POST" action="/details/<%= r._id %>?_method=PUT">
 
             <label>Review:</label>
@@ -58,7 +60,7 @@
           </select>
 
           <input type="hidden" name='base64' value="<%= base64 %>"/>
-            <input type="submit" value="Edit Review">
+            <input type="submit" class="btn btn-primary" value="Edit Review"></button>
           </form>
         </td>
           </tr>
@@ -86,6 +88,8 @@
   <textarea hidden name="mal_id" ><%= anime.mal_id %></textarea>
   <input type="submit" value="Add Review">
 </form>
+
+</div>
       <!-- EDIT REVIEW
   <form method="POST" action="/details/< base64 %> ?_method=PATCH">
 
